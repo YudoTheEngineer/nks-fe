@@ -38,9 +38,9 @@
 
         <div class="flex items-center gap-5 shrink-0">
             <div
-                class="hidden lg:flex items-center gap-2 bg-blue-100 border border-blue-200 text-blue-800
+                class="hidden lg:flex items-center gap-2 bg-blue-100 border border-blue-200 text-blue-500
                         text-xs font-medium px-3.5 py-1.5 rounded select-none">
-                <i class="fas fa-calendar-alt text-blue-800"></i>
+                <i class="fas fa-calendar-alt text-blue-500"></i>
                 <span>{{ today }}</span>
             </div>
 
