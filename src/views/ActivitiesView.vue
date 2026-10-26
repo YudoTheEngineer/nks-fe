@@ -7,7 +7,7 @@
     <div class="min-h-screen overflow-x-hidden antialiased bg-gray-50">
         <AdminSideBar />
         <main class="lg:ml-[260px] min-h-screen px-4 sm:px-6 lg:px-7 transition-all duration-300">
-            <TopBar title="Dashboard" subtitle="Monitoring & Evaluasi NKS Jabar - BRIN"/>
+            <TopBar title="Manajemen Kegiatan" subtitle="Evaluasi dan bandingkan laporan kinerja kegiatan antara Perangkat Daerah Jabar dan Unit BRIN"/>
         </main>
     </div>
 </template>

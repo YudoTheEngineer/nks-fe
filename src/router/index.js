@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardView from '@/views/DashboardView.vue';
 import ActivitiesView from "@/views/ActivitiesView.vue";
 import DivisionsView from "@/views/DivisionsView.vue";
+import CollabsView from "@/views/CollabsView.vue";
 
 const routes = [
     {
@@ -26,7 +27,7 @@ const routes = [
     {
         path: '/collabs',
         name: 'collabs',
-        component: ActivitiesView
+        component: CollabsView
     },
 ]
 
