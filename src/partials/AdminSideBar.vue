@@ -45,8 +45,8 @@
 
         <div class="h-20 px-5 border-b border-blue-100 flex items-center shrink-0">
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 bg-blue-500 rounded-[12px] flex items-center justify-center shadow-md shadow-sky-500/30">
-                    <i class="fas fa-flask text-white text-lg"></i>
+                <div class="w-11 h-11 bg-blue-500 rounded-[12px] flex items-center justify-center">
+                    <i class="fas fa-users text-white text-lg"></i>
                 </div>
                 <div class="flex-1 min-w-0">
                     <div class="text-[14px] font-extrabold text-blue-800 leading-tight truncate">
@@ -62,7 +62,7 @@
         <div class="px-4 pt-4 pb-3 border-b border-blue-50">
             <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-[12px] border border-blue-100">
                 <img src="https://ui-avatars.com/api/?name=Admin+NKS&&background=bfdbfe&color=fff" alt="Avatar"
-                    class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover shrink-0">
+                    class="w-10 h-10 rounded-full border-2 border-white object-cover shrink-0">
                 <div class="flex-1 min-w-0">
                     <div class="text-[12.5px] font-bold text-blue-800 truncate">
                         Admin NKS
