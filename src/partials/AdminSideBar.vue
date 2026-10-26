@@ -1,5 +1,6 @@
 <script setup>
-    import { ref } from 'vue'
+    import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+    import { closeSidebar, isSidebarOpen } from '@/helpers/sidebar'
 
     const navs = ref([
         {
@@ -18,11 +19,29 @@
             ]
         }
     ])
+
+    watch(isSidebarOpen, (open) => {
+        document.body.style.overflow = open ? 'hidden' : ''
+    })
+
+    function handleResize() {
+        if (window.innerWidth >= 1024) {
+            closeSidebar()
+        }
+    }
+
+    onMounted(() => window.addEventListener('resize', handleResize))
+
+    onBeforeUnmount(() => {
+        window.removeEventListener('resize', handleResize)
+        document.body.style.overflow = ''
+    })
 </script>
 
 <template>
     <aside id="sidebar"
-        class="fixed top-0 left-0 z-40 h-screen w-[260px] bg-white border-r border-blue-200 flex flex-col transition-transform duration-300 antialiased translate-x-0">
+        :class="isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+        class="fixed top-0 left-0 z-40 h-screen w-[260px] bg-white border-r border-blue-200 flex flex-col transition-transform duration-300 antialiased">
 
         <div class="h-20 px-5 border-b border-blue-100 flex items-center shrink-0">
             <div class="flex items-center gap-3">
@@ -67,6 +86,7 @@
                     v-for="page in nav.pages"
                     :key="page.route"
                     :to="{ name: page.route }"
+                    @click="closeSidebar"
                     active-class="bg-blue-50"
                     class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-[10px] text-[13px] font-bold transition-all text-gray-600">
                     <i :class="['fas', page.icon]" class="w-5 text-center text-[14px] text-blue-500"></i>
@@ -82,5 +102,7 @@
         </div>
     </aside>
 
-    <div id="sidebarOverlay" class="fixed inset-0 bg-gray-900/50 z-30 hidden lg:hidden"></div>
+    <div id="sidebarOverlay" @click="closeSidebar"
+        :class="isSidebarOpen ? 'block' : 'hidden'"
+        class="fixed inset-0 bg-gray-900/50 z-[35] lg:hidden"></div>
 </template>
