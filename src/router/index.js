@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardView from '@/views/DashboardView.vue';
+import ActivitiesView from "@/views/ActivitiesView.vue";
+import DivisionsView from "@/views/DivisionsView.vue";
 
 const routes = [
     {
@@ -14,17 +16,17 @@ const routes = [
     {
         path: '/activities',
         name: 'activities',
-        component: DashboardView
+        component: ActivitiesView
     },
     {
         path: '/divisions',
         name: 'divisions',
-        component: DashboardView
+        component: DivisionsView
     },
     {
         path: '/collabs',
         name: 'collabs',
-        component: DashboardView
+        component: ActivitiesView
     },
 ]
 
