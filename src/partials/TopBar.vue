@@ -1,6 +1,5 @@
 <script setup>
     import { onBeforeUnmount, onMounted, ref } from 'vue'
-    import { formatDate } from '@/helpers/date'
     import { isSidebarOpen, toggleSidebar } from '@/helpers/sidebar'
 
     const today = formatDate()
@@ -69,13 +68,6 @@
         </div>
 
         <div class="flex items-center gap-5 shrink-0">
-            <div
-                class="hidden lg:flex items-center gap-2 bg-blue-100 border border-blue-200 text-blue-500
-                        text-xs font-medium px-3.5 py-1.5 rounded select-none">
-                <i class="fas fa-calendar-alt text-blue-500"></i>
-                <span>{{ today }}</span>
-            </div>
-
             <div ref="userMenuRef" class="relative">
                 <button type="button" @click="toggleUserMenu" aria-haspopup="menu"
                     :aria-expanded="isUserMenuOpen" aria-controls="user-menu"
