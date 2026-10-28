@@ -6,6 +6,7 @@
     import TopBar from '@/partials/TopBar.vue';
     import InputField from '@/components/InputField.vue';
     import DropdownInputField from '@/components/DropdownInputField.vue';
+    import Toolbar from '@/components/Toolbar.vue';
 
     const institutions = ref([
         {
@@ -17,6 +18,16 @@
             name: 'Badan Riset Dan Inovasi Nasional (BRIN)'
         }
     ])
+
+    const activeTab = ref('jbr');
+
+    const tabs = ref([
+        { key: 'jbr', name: 'Divisi BP2D', icon: 'fa-sitemap', count: 12 },
+        { key: 'mtr', name: 'Divisi BRIN', icon: 'fa-microscope', count: 8 },
+        { key: 'trashed', name: 'Disembunyikan', icon: 'fa-eye-slash', count: 3 }
+    ]);
+
+    const years = ref([2026, 2025, 2024]);
 </script>
 
 <template>
@@ -60,6 +71,17 @@
                         </button>
                     </div>
                 </SectionCard>
+
+                <Toolbar
+                    v-model="activeTab"
+                    :tabs="tabs"
+                    :years="years"
+                    search-placeholder="Cari nama divisi..."
+                    @tab-change="(key) => console.log('tab', key)"
+                    @filter-change="(f) => console.log(f)"
+                    @per-page-change="(v) => console.log(v)"
+                    @reset="() => console.log('reset')">
+                </Toolbar>
             </div>
         </main>
     </div>
