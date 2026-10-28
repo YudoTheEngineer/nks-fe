@@ -16,13 +16,13 @@
 </script>
 
 <template>
-    <div class="bg-white border border-blue-200 rounded-2xl mb-5 overflow-hidden transition-all">
-        <div class="flex items-center gap-3.5 px-5 py-4 bg-blue-50 border-b border-blue-200">
-            <div class="w-9 h-9 bg-blue-500 text-white rounded-[10px] flex items-center justify-center text-sm font-extrabold shrink-0 transition-colors">
+    <div :class="[style]" class="bg-white border border-sky-200 rounded-2xl mb-5 overflow-hidden transition-all">
+        <div class="flex items-center gap-3.5 px-5 py-4 bg-sky-50 border-b border-sky-200">
+            <div class="w-9 h-9 bg-sky-500 text-white rounded-[10px] flex items-center justify-center text-sm font-extrabold shrink-0 transition-colors">
                 <i :class="['fas', icon]" class="text-[13px]"></i>
             </div>
             <div class="flex-1 min-w-0">
-                <h3 class="text-[15px] font-bold text-blue-800 flex items-center gap-2 tracking-tight truncate">
+                <h3 class="text-[15px] font-bold text-sky-800 flex items-center gap-2 tracking-tight truncate">
                     {{ title }}
                 </h3>
                 <p v-if="subtitle" class="text-xs text-gray-500 mt-0.5 truncate">{{ subtitle }}</p>
