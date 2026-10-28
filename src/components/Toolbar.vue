@@ -365,8 +365,8 @@
                     v-for="tab in tabs"
                     :key="tab.key"
                     type="button"
-                    class="flex-1 sm:flex-none cursor-pointer select-none inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-[8px] text-[12px] font-bold transition-all"
-                    :class="tab.key === currentTab ? 'bg-sky-600 text-white shadow-sm' : 'text-slate-600'"
+                    class="flex-1 sm:flex-none cursor-pointer select-none inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg text-[12px] font-bold transition-all"
+                    :class="tab.key === currentTab ? 'bg-sky-600 text-white' : 'text-gray-600'"
                     @click="selectTab(tab)"
                 >
                     <i v-if="tab.icon" :class="['fas', tab.icon]" class="text-[11px]"></i>
@@ -374,7 +374,7 @@
                     <span
                         v-if="tab.count !== undefined && tab.count !== null"
                         class="px-1.5 py-0.5 rounded-full text-[10px]"
-                        :class="tab.key === currentTab ? 'bg-sky-100 text-sky-700' : 'bg-slate-200 text-slate-700'"
+                        :class="tab.key === currentTab ? 'bg-sky-100 text-sky-700' : 'bg-gray-200 text-slate-700'"
                     >
                         {{ tab.count }}
                     </span>
@@ -401,7 +401,7 @@
                     aria-haspopup="listbox"
                     :aria-expanded="openSelect === perPageSelect.key"
                     :aria-label="perPageSelect.ariaLabel"
-                    class="inline-flex items-center justify-center gap-1 text-center text-[12.5px] font-medium pl-2.5 pr-1.5 py-1.5 rounded-[8px] border-[1.5px] border-sky-200 bg-white outline-none cursor-pointer transition-all hover:border-sky-400 focus:border-sky-500 focus:ring-4 focus:ring-sky-100 text-slate-700"
+                    class="inline-flex items-center justify-center gap-1 text-center text-[12.5px] font-medium pl-2.5 pr-1.5 py-1.5 rounded-lg border-[1.5px] border-sky-200 bg-white outline-none cursor-pointer transition-all hover:border-sky-400  text-gray-700"
                     @click="toggleSelect(perPageSelect, $event)"
                     @keydown="onTriggerKeydown(perPageSelect, $event)"
                 >
@@ -421,7 +421,7 @@
                 role="listbox"
                 :aria-label="activeSelect?.ariaLabel"
                 :style="{ ...panelStyle, visibility: positioned ? 'visible' : 'hidden' }"
-                class="fixed z-[60] bg-white border border-sky-200 rounded-[10px] shadow-[0_10px_25px_rgba(2,132,199,0.12)] max-h-[240px] overflow-y-auto p-1"
+                class="fixed z-60 bg-white border border-sky-200 rounded-[10px] max-h-60 overflow-y-auto p-1"
                 @mouseleave="resetHover"
             >
                 <template v-if="activeSelect">
@@ -430,7 +430,7 @@
                         :key="`${opt.value}-${index}`"
                         role="option"
                         :aria-selected="isSelected(opt)"
-                        class="px-3 py-2 rounded-lg text-[13px] cursor-pointer transition-colors duration-150 [overflow-wrap:anywhere]"
+                        class="px-3 py-2 rounded-lg text-[13px] cursor-pointer transition-colors duration-150 wrap-anywhere"
                         :class="optionClass(opt, index)"
                         @click="choose(opt)"
                         @mouseenter="hoveredValue = opt.value; activeIndex = index"

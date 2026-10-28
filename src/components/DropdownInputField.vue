@@ -258,7 +258,7 @@
                 role="listbox"
                 :aria-labelledby="labelId"
                 :style="{ ...panelStyle, visibility: positioned ? 'visible' : 'hidden' }"
-                class="fixed z-[60] bg-white border border-sky-200 rounded-[10px] shadow-[0_10px_25px_rgba(2,132,199,0.12)] max-h-[240px] overflow-y-auto p-1"
+                class="fixed z-60 bg-white border border-sky-200 rounded-[10px] shadow-[0_10px_25px_rgba(2,132,199,0.12)] max-h-60 overflow-y-auto p-1"
                 @mouseleave="resetHover"
             >
                 <div
@@ -266,7 +266,7 @@
                     :key="`${opt.value}-${index}`"
                     role="option"
                     :aria-selected="isSelected(opt)"
-                    class="px-3 py-2 rounded-lg text-[13px] cursor-pointer transition-colors duration-150 [overflow-wrap:anywhere]"
+                    class="px-3 py-2 rounded-lg text-[13px] cursor-pointer transition-colors duration-150 wrap-anywhere"
                     :class="optionClass(opt, index)"
                     @click="select(opt)"
                     @mouseenter="hoveredValue = opt.value; activeIndex = index"

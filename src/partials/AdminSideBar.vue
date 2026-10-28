@@ -41,11 +41,11 @@
 <template>
     <aside id="sidebar"
         :class="isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-        class="fixed top-0 left-0 z-40 h-screen w-[260px] bg-white border-r border-sky-200 flex flex-col transition-transform duration-300 antialiased">
+        class="fixed top-0 left-0 z-40 h-screen w-65 bg-white border-r border-sky-200 flex flex-col transition-transform duration-300 antialiased">
 
         <div class="h-20 px-5 border-b border-sky-100 flex items-center shrink-0">
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 bg-sky-500 rounded-[12px] flex items-center justify-center">
+                <div class="w-11 h-11 bg-sky-500 rounded-xl flex items-center justify-center">
                     <i class="fas fa-users text-white text-lg"></i>
                 </div>
                 <div class="flex-1 min-w-0">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="px-4 pt-4 pb-3 border-b border-sky-50">
-            <div class="flex items-center gap-3 p-3 bg-sky-50 rounded-[12px] border border-sky-100">
+            <div class="flex items-center gap-3 p-3 bg-sky-50 rounded-xl border border-sky-100">
                 <img src="https://ui-avatars.com/api/?name=Admin+NKS&&background=bfdbfe&color=fff" alt="Avatar"
                     class="w-10 h-10 rounded-full border-2 border-white object-cover shrink-0">
                 <div class="flex-1 min-w-0">
@@ -104,5 +104,5 @@
 
     <div id="sidebarOverlay" @click="closeSidebar"
         :class="isSidebarOpen ? 'block' : 'hidden'"
-        class="fixed inset-0 bg-gray-900/50 z-[35] lg:hidden"></div>
+        class="fixed inset-0 bg-gray-900/50 z-35 lg:hidden"></div>
 </template>
