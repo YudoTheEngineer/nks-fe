@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from 'vue';
+    import { computed, ref } from 'vue';
     import Card from '@/components/Card.vue';
     import SectionCard from '@/components/SectionCard.vue';
     import AdminSideBar from '@/partials/AdminSideBar.vue';
@@ -7,6 +7,8 @@
     import InputField from '@/components/InputField.vue';
     import DropdownInputField from '@/components/DropdownInputField.vue';
     import Toolbar from '@/components/Toolbar.vue';
+    import DivisionsTable from '@/components/DivisionsTable.vue';
+    import TrashedDivisionsTable from '@/components/TrashedDivisionsTable.vue';
 
     const institutions = ref([
         {
@@ -20,14 +22,72 @@
     ])
 
     const activeTab = ref('jbr');
+    const filters = ref({ search: '', year: '', month: '', sort: 'terbaru' });
+    const perPage = ref('10');
 
-    const tabs = ref([
-        { key: 'jbr', name: 'Divisi BP2D', icon: 'fa-sitemap', count: 12 },
-        { key: 'mtr', name: 'Divisi BRIN', icon: 'fa-microscope', count: 8 },
-        { key: 'trashed', name: 'Disembunyikan', icon: 'fa-eye-slash', count: 3 }
+    const jbrDivisions = ref([
+        {
+            id: 1,
+            name: 'Sekretariat Daerah',
+            institution_id: 1,
+            created_at: '2026-10-10 08:45:30',
+            updated_at: '2026-10-12 09:00:00'
+        },
+        {
+            id: 2,
+            name: 'Dinas Pendidikan',
+            institution_id: 1,
+            created_at: '2026-09-01 10:00:00',
+            updated_at: '2026-09-01 10:00:00'
+        }
     ]);
 
-    const years = ref([2026, 2025, 2024]);
+    const mtrDivisions = ref([
+        {
+            id: 31,
+            name: 'Pusat Riset Energi',
+            institution_id: 2,
+            created_at: '2026-08-20 13:15:00',
+            updated_at: '2026-08-21 08:30:00'
+        }
+    ]);
+
+    const trashedDivisions = ref([
+        {
+            id: 5,
+            name: 'Divisi Lama',
+            institution_id: 1,
+            source: 'jbr',
+            created_at: '2026-01-05 09:00:00',
+            updated_at: '2026-02-01 11:00:00',
+            deleted_at: '2026-03-10 14:20:00'
+        },
+        {
+            id: 42,
+            name: 'Unit Riset Lama',
+            institution_id: 2,
+            source: 'mtr',
+            created_at: '2025-12-01 08:00:00',
+            updated_at: '2025-12-01 08:00:00',
+            deleted_at: '2026-04-02 16:45:00'
+        }
+    ]);
+
+    const tabs = computed(() => [
+        { key: 'jbr', name: 'Divisi BP2D', icon: 'fa-sitemap', count: jbrDivisions.value.length },
+        { key: 'mtr', name: 'Divisi BRIN', icon: 'fa-microscope', count: mtrDivisions.value.length },
+        { key: 'trashed', name: 'Disembunyikan', icon: 'fa-eye-slash', count: trashedDivisions.value.length }
+    ]);
+
+    const years = computed(() => {
+        const rows = [...jbrDivisions.value, ...mtrDivisions.value, ...trashedDivisions.value];
+        const values = rows
+            .flatMap((row) => [row.created_at, row.deleted_at])
+            .filter(Boolean)
+            .map((value) => String(value).slice(0, 4));
+
+        return [...new Set(values)].sort((a, b) => b - a);
+    });
 </script>
 
 <template>
@@ -77,11 +137,41 @@
                     :tabs="tabs"
                     :years="years"
                     search-placeholder="Cari nama divisi..."
-                    @tab-change="(key) => console.log('tab', key)"
-                    @filter-change="(f) => console.log(f)"
-                    @per-page-change="(v) => console.log(v)"
-                    @reset="() => console.log('reset')">
+                    @filter-change="filters = $event"
+                    @per-page-change="perPage = $event">
                 </Toolbar>
+
+                <div class="bg-white border border-sky-200 rounded-2xl overflow-hidden">
+                    <div class="flex items-center justify-between px-4 sm:px-5 py-4 bg-sky-50 border-b border-sky-200 flex-wrap gap-2">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-table text-sky-500 text-lg"></i>
+                            <h3 class="text-[15px] font-bold text-sky-800">Daftar Divisi</h3>
+                        </div>
+                    </div>
+
+                    <DivisionsTable
+                        v-show="activeTab === 'jbr'"
+                        :items="jbrDivisions"
+                        division="jbr"
+                        :filters="filters"
+                        :per-page="perPage">
+                    </DivisionsTable>
+
+                    <DivisionsTable
+                        v-show="activeTab === 'mtr'"
+                        :items="mtrDivisions"
+                        division="mtr"
+                        :filters="filters"
+                        :per-page="perPage">
+                    </DivisionsTable>
+
+                    <TrashedDivisionsTable
+                        v-show="activeTab === 'trashed'"
+                        :items="trashedDivisions"
+                        :filters="filters"
+                        :per-page="perPage">
+                    </TrashedDivisionsTable>
+                </div>
             </div>
         </main>
     </div>
