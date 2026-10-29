@@ -119,7 +119,7 @@
                     <span
                         v-if="row.item.source === 'jbr'"
                         class="inline-block text-[10.5px] font-bold px-2.5 py-1 rounded-md tracking-wider uppercase bg-sky-700 text-white"
-                    >BP2D</span>
+                    >PDJB</span>
                     <span
                         v-else-if="row.item.source === 'mtr'"
                         class="inline-block text-[10.5px] font-bold px-2.5 py-1 rounded-md tracking-wider uppercase bg-sky-500 text-white"
