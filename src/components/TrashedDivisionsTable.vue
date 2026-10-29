@@ -97,19 +97,22 @@
 <template>
     <div ref="rootRef" class="overflow-x-auto">
         <table class="w-full text-[13px] min-w-160">
-            <tr class="bg-sky-500 sticky top-0 z-10">
-                <td class="text-center text-[10.5px] font-bold text-sky-800 uppercase tracking-wider px-3 sm:px-5 py-3 w-17.5 bg-sky-50">No</td>
-                <td class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-2 bg-sky-50 hidden sm:table-cell w-px whitespace-nowrap">Institusi</td>
-                <td class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 bg-sky-50">Divisi</td>
-                <td class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 bg-sky-50">Tanggal</td>
-                <td class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 sm:px-0 bg-sky-50">Aksi</td>
-            </tr>
+            <thead>
+                <tr class="bg-sky-500 sticky top-0 z-10">
+                    <th class="text-center text-[10.5px] font-bold text-sky-800 uppercase tracking-wider px-3 sm:px-5 py-3 w-17.5 bg-sky-50">No</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-2 bg-sky-50 hidden sm:table-cell w-px whitespace-nowrap">Institusi</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 bg-sky-50">Divisi</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 bg-sky-50">Tanggal</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 sm:px-0 bg-sky-50">Aksi</th>
+                </tr>
+            </thead>
 
-            <tr
-                v-for="row in pagedRows"
-                :key="row.item.id ?? row.number"
-                class="border-b border-sky-100 transition-colors division-row"
-            >
+            <tbody>
+                <tr
+                    v-for="row in pagedRows"
+                    :key="row.item.id ?? row.number"
+                    class="border-b border-sky-100 transition-colors division-row"
+                >
                 <td class="py-4 px-3 sm:px-5 text-center font-bold text-sky-800">{{ row.number }}</td>
 
                 <td class="py-4 px-2 text-left hidden sm:table-cell w-px whitespace-nowrap">
@@ -170,6 +173,7 @@
             <tr v-if="!pagedRows.length" class="empty-row">
                 <td colspan="5" class="px-5 py-6 text-center text-gray-500 font-medium">{{ emptyMessage }}</td>
             </tr>
+            </tbody>
         </table>
 
         <div class="border-t border-sky-100 px-4 sm:px-5 py-3 flex items-center justify-between flex-wrap gap-3">
