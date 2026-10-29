@@ -70,7 +70,7 @@ export const filterDivisions = (items, filters, dateField) => {
 
     return items
         .filter((item) => {
-            const name = String(item?.name ?? '').toLowerCase();
+            const name = String(item?.title ?? item?.name ?? '').toLowerCase();
             if (search && !name.includes(search)) return false;
 
             const date = toDate(item?.[dateField]);
@@ -81,7 +81,9 @@ export const filterDivisions = (items, filters, dateField) => {
         })
         .sort((rowA, rowB) => {
             if (sort === 'nama-asc') {
-                return String(rowA?.name ?? '').localeCompare(String(rowB?.name ?? ''), 'id');
+                const labelA = String(rowA?.title ?? rowA?.name ?? '');
+                const labelB = String(rowB?.title ?? rowB?.name ?? '');
+                return labelA.localeCompare(labelB, 'id');
             }
 
             const timeA = toDate(rowA?.[dateField])?.getTime() ?? 0;
@@ -90,6 +92,8 @@ export const filterDivisions = (items, filters, dateField) => {
             return sort === 'terlama' ? timeA - timeB : timeB - timeA;
         });
 };
+
+export const filterCollabs = filterDivisions;
 
 export const pageWindow = (totalPages, currentPage) => {
     const delta = 1;
