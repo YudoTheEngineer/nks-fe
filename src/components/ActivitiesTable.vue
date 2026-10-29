@@ -165,13 +165,13 @@
 
                             <div class="space-y-1">
                                 <div class="flex items-center gap-1.5 min-w-0">
-                                    <span class="shrink-0 inline-block text-[9.5px] font-bold px-2 py-0.5 rounded tracking-wider uppercase bg-sky-700 text-white">PD Jabar</span>
+                                    <span class="shrink-0 inline-block text-[9.5px] font-bold px-2 py-0.5 rounded tracking-wider uppercase bg-sky-700 text-white">PDJB</span>
                                     <span class="truncate text-[12px] font-medium text-gray-700" :title="row.item.jbrDivision?.name ?? row.item.jbr_division?.name ?? '-'">
                                         {{ row.item.jbrDivision?.name ?? row.item.jbr_division?.name ?? '-' }}
                                     </span>
                                 </div>
                                 <div class="flex items-center gap-1.5 min-w-0">
-                                    <span class="shrink-0 inline-block text-[9.5px] font-bold px-2 py-0.5 rounded tracking-wider uppercase bg-sky-500 text-white">Unit BRIN</span>
+                                    <span class="shrink-0 inline-block text-[9.5px] font-bold px-2 py-0.5 rounded tracking-wider uppercase bg-sky-500 text-white">BRIN</span>
                                     <span class="truncate text-[12px] font-medium text-gray-700" :title="row.item.mtrDivision?.name ?? row.item.mtr_division?.name ?? '-'">
                                         {{ row.item.mtrDivision?.name ?? row.item.mtr_division?.name ?? '-' }}
                                     </span>
@@ -218,7 +218,7 @@
                                 class="cursor-pointer select-none inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-100 text-sky-700 hover:bg-sky-700 hover:text-white rounded-lg text-[11.5px] font-bold transition-colors"
                             >
                                 <i class="fas fa-scale-balanced text-[10px]"></i>
-                                <span>Compare</span>
+                                <span>Komparasi</span>
                             </button>
 
                             <button
