@@ -1,6 +1,7 @@
 <script setup>
     import { computed, ref, watch } from 'vue';
-    import { buildDateInfo, filterDivisions, pageWindow } from '@/helpers/divisionTable';
+    import { buildDateInfo } from '@/helpers/date';
+    import { filterTableItems, pageWindow } from '@/helpers/table';
 
     const props = defineProps({
         items: { type: Array, default: () => [] },
@@ -17,7 +18,7 @@
     const page = ref(1);
     const rootRef = ref(null);
 
-    const filteredRows = computed(() => filterDivisions(props.items, props.filters, 'created_at'));
+    const filteredRows = computed(() => filterTableItems(props.items, props.filters, 'created_at'));
 
     const perPageSize = computed(() => {
         const value = String(props.perPage ?? '10');
