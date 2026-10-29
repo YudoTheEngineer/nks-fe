@@ -99,8 +99,8 @@
             <div class="flex-1 px-4 sm:px-6 lg:px-7 pt-26 pb-12">
                 <div class="grid lg:grid-cols-3 sm:grid-cols-1 gap-3.5 mb-5">
                     <Card title="Total Divisi" :total="10" icon="fa-sitemap" color="bg-sky-700"></Card>
-                    <Card title="Perangkat Daerah" :total="10" icon="fa-building" color="bg-sky-500"></Card>
-                    <Card title="Unit BRIN" :total="10" icon="fa-microscope" color="bg-sky-300"></Card>
+                    <Card title="Perangkat Daerah" :total="10" icon="fa-building" color="bg-sky-700"></Card>
+                    <Card title="Unit BRIN" :total="10" icon="fa-microscope" color="bg-sky-700"></Card>
                 </div>
 
                 <SectionCard title="Tambah Data Divisi" subtitle="Buat dan simpan informasi Unit/OPD" icon="fa-plus">
