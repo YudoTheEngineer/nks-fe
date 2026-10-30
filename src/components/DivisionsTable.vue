@@ -101,11 +101,11 @@
         <table class="w-full text-[13px] min-w-160">
             <thead>
                 <tr class="bg-sky-500 sticky top-0 z-10">
-                    <th class="text-center text-[10.5px] font-bold text-sky-800 uppercase tracking-wider px-3 sm:px-5 py-3 w-17.5 bg-sky-50">No</th>
+                    <th class="text-center text-[10.5px] font-bold text-sky-800 uppercase tracking-wider px-3 sm:px-5 py-3 w-16 bg-sky-50">No</th>
                     <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-2 bg-sky-50 hidden sm:table-cell w-px whitespace-nowrap">Institusi</th>
-                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 bg-sky-50">Divisi</th>
-                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 bg-sky-50">Tanggal</th>
-                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 sm:px-0 bg-sky-50">Aksi</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-4 bg-sky-50 w-full">Divisi</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-4 bg-sky-50 w-px whitespace-nowrap">Tanggal</th>
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 sm:px-4 bg-sky-50 w-px whitespace-nowrap">Aksi</th>
                 </tr>
             </thead>
 
@@ -128,9 +128,9 @@
                     >BRIN</span>
                 </td>
 
-                <td class="py-4 font-semibold text-gray-700 w-48 sm:w-80 max-w-48 sm:max-w-80 text-[13.5px] truncate">{{ row.item.name }}</td>
+                <td class="py-4 px-4 font-semibold text-gray-700 text-[13.5px] leading-snug">{{ row.item.name }}</td>
 
-                <td class="px-4 py-3.5 align-top">
+                <td class="px-4 py-3.5 align-top whitespace-nowrap">
                     <div class="space-y-1">
                         <div class="flex items-center gap-1.5 text-[11px] text-gray-600 whitespace-nowrap">
                             <span class="font-medium">Dibuat:</span>
@@ -153,31 +153,36 @@
                     </div>
                 </td>
 
-                <td class="py-4 text-left">
-                    <div class="inline-flex flex-wrap gap-1.5">
+                <td class="py-4 pl-3 pr-4 text-left whitespace-nowrap align-top">
+                    <div class="inline-flex items-center gap-2">
                         <button
                             type="button"
-                            class="cursor-pointer select-none inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-100 text-sky-700 hover:bg-sky-700 hover:text-white rounded-lg text-[11.5px] font-bold transition-colors"
+                            title="Edit"
+                            aria-label="Edit"
+                            class="cursor-pointer select-none text-sky-600 hover:text-sky-800 transition-colors p-1"
                             @click="emit('edit', row.item)"
                         >
-                            <i class="fas fa-pen text-[10px]"></i> Edit
+                            <i class="fas fa-pen text-[14px]"></i>
                         </button>
 
                         <button
                             type="button"
-                            class="cursor-pointer select-none inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-100 text-red-700 hover:bg-red-700 hover:text-white rounded-lg text-[11.5px] font-bold transition-colors"
+                            title="Sembunyikan"
+                            aria-label="Sembunyikan"
+                            class="cursor-pointer select-none text-red-500 hover:text-red-700 transition-colors p-1"
                             @click="emit('hide', row.item)"
                         >
-                            <i class="fas fa-eye-slash text-[10px]"></i> Sembunyikan
+                            <i class="fas fa-eye-slash text-[14px]"></i>
                         </button>
 
                         <button
                             type="button"
                             title="Lihat Detail"
-                            class="cursor-pointer select-none inline-flex items-center justify-center w-8 h-8 rounded-lg text-[13px] bg-sky-100 text-sky-700 hover:bg-sky-700 hover:text-white transition-colors"
+                            aria-label="Lihat Detail"
+                            class="cursor-pointer select-none text-gray-500 hover:text-gray-800 transition-colors p-1"
                             @click="emit('detail', row.item)"
                         >
-                            <i class="fas fa-ellipsis-vertical"></i>
+                            <i class="fas fa-ellipsis-vertical text-[14px]"></i>
                         </button>
                     </div>
                 </td>
