@@ -12,6 +12,8 @@
         perPage: { type: [String, Number], default: '10' }
     });
 
+    const emit = defineEmits(['compare', 'hide', 'detail']);
+
     const page = ref(1);
     const rootRef = ref(null);
 
@@ -142,7 +144,7 @@
                     <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 bg-sky-50 w-48 sm:w-56">
                         Tanggal
                     </th>
-                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 sm:px-4 bg-sky-50 w-44">
+                    <th class="text-left text-[10.5px] font-bold text-sky-800 uppercase tracking-wider py-3 px-3 sm:px-4 bg-sky-50 w-28 whitespace-nowrap">
                         Aksi
                     </th>
                 </tr>
@@ -212,22 +214,35 @@
                     </td>
 
                     <td class="py-4 pl-3 pr-4 text-left whitespace-nowrap align-top">
-                        <div class="inline-flex items-center gap-1.5">
+                        <div class="inline-flex items-center gap-2">
                             <button
                                 type="button"
-                                title="Bandingkan & Evaluasi Dua Sisi"
-                                class="cursor-pointer select-none inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-100 text-sky-700 hover:bg-sky-700 hover:text-white rounded-lg text-[11.5px] font-bold transition-colors"
+                                title="Komparasi"
+                                aria-label="Komparasi"
+                                class="cursor-pointer select-none text-sky-600 hover:text-sky-800 transition-colors p-1"
+                                @click="emit('compare', row.item)"
                             >
-                                <i class="fas fa-scale-balanced text-[10px]"></i>
-                                <span>Komparasi</span>
+                                <i class="fas fa-table-columns text-[14px]"></i>
                             </button>
 
                             <button
                                 type="button"
                                 title="Sembunyikan"
-                                class="cursor-pointer select-none inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-100 text-red-700 hover:bg-red-700 hover:text-white rounded-lg text-[11.5px] font-bold transition-colors"
+                                aria-label="Sembunyikan"
+                                class="cursor-pointer select-none text-red-500 hover:text-red-700 transition-colors p-1"
+                                @click="emit('hide', row.item)"
                             >
-                                <i class="fas fa-eye-slash text-[10px]"></i> Sembunyikan
+                                <i class="fas fa-eye-slash text-[14px]"></i>
+                            </button>
+
+                            <button
+                                type="button"
+                                title="Lihat Detail"
+                                aria-label="Lihat Detail"
+                                class="cursor-pointer select-none text-gray-500 hover:text-gray-800 transition-colors p-1"
+                                @click="emit('detail', row.item)"
+                            >
+                                <i class="fas fa-ellipsis-vertical text-[14px]"></i>
                             </button>
                         </div>
                     </td>

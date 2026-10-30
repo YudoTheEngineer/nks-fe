@@ -5,6 +5,7 @@
     import Card from '@/components/Card.vue';
     import Toolbar from '@/components/Toolbar.vue';
     import ActivitiesTable from '@/components/ActivitiesTable.vue';
+    import TrashedActivitiesTable from '@/components/TrashedActivitiesTable.vue';
 
     const activeTab = ref('active');
     const filters = ref({ search: '', year: '', month: '', sort: 'terbaru' });
@@ -43,13 +44,29 @@
         }
     ]);
 
+    const trashedActivities = ref([
+        {
+            id: 4,
+            title: 'Kajian Awal Pemanfaatan Limbah Pertanian untuk Energi',
+            jbrDivision: { name: 'Dinas Tanaman Pangan dan Hortikultura' },
+            mtrDivision: { name: 'Pusat Riset Energi Terbarukan' },
+            status: 'proses',
+            progress: 30,
+            created_at: '2026-02-10 08:00:00',
+            updated_at: '2026-02-15 10:00:00',
+            deleted_at: '2026-05-12 15:30:00'
+        }
+    ]);
+
     const tabs = computed(() => [
-        { key: 'active', name: 'Kolaborasi Aktif', icon: 'fa-handshake', count: activities.value.length }
+        { key: 'active', name: 'Kolaborasi Aktif', icon: 'fa-handshake', count: activities.value.length },
+        { key: 'trashed', name: 'Disembunyikan', icon: 'fa-eye-slash', count: trashedActivities.value.length }
     ]);
 
     const years = computed(() => {
-        const values = activities.value
-            .map((item) => item.created_at)
+        const rows = [...activities.value, ...trashedActivities.value];
+        const values = rows
+            .flatMap((item) => [item.created_at, item.deleted_at])
             .filter(Boolean)
             .map((val) => String(val).slice(0, 4));
 
@@ -95,10 +112,18 @@
                     </div>
 
                     <ActivitiesTable
+                        v-show="activeTab === 'active'"
                         :items="activities"
                         :filters="filters"
                         :per-page="perPage">
                     </ActivitiesTable>
+
+                    <TrashedActivitiesTable
+                        v-show="activeTab === 'trashed'"
+                        :items="trashedActivities"
+                        :filters="filters"
+                        :per-page="perPage">
+                    </TrashedActivitiesTable>
                 </div>
             </div>
         </main>
