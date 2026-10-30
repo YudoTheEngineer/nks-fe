@@ -74,8 +74,8 @@
     ]);
 
     const tabs = computed(() => [
-        { key: 'jbr', name: 'Divisi BP2D', icon: 'fa-sitemap', count: jbrDivisions.value.length },
-        { key: 'mtr', name: 'Divisi BRIN', icon: 'fa-microscope', count: mtrDivisions.value.length },
+        { key: 'jbr', name: 'PD Jabar', icon: 'fa-sitemap', count: jbrDivisions.value.length },
+        { key: 'mtr', name: 'Unit BRIN', icon: 'fa-microscope', count: mtrDivisions.value.length },
         { key: 'trashed', name: 'Disembunyikan', icon: 'fa-eye-slash', count: trashedDivisions.value.length }
     ]);
 

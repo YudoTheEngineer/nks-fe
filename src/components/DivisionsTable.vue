@@ -65,7 +65,7 @@
 
     const emptyMessage = computed(() =>
         props.items.length === 0
-            ? `Data Divisi ${props.division === 'mtr' ? 'BRIN' : 'BP2D'} belum tersedia. Silakan tambahkan data divisi terlebih dahulu.`
+            ? `Data ${props.division === 'mtr' ? 'Unit BRIN' : 'PD Jabar'} belum tersedia. Silakan tambahkan data divisi terlebih dahulu.`
             : 'Tidak ada divisi yang cocok dengan filter yang dipilih.'
     );
 
